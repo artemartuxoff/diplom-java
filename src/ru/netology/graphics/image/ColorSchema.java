@@ -9,6 +9,7 @@ public class ColorSchema implements TextColorSchema{
 
     public ColorSchema(){
 
+        // строка символов
         char[] symbolChar = {'#','$','@','%','*','+','-'};
 
         int countPart = 255/symbolChar.length + 1;

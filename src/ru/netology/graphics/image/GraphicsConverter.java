@@ -139,6 +139,7 @@ public class GraphicsConverter implements TextGraphicsConverter {
             for (int ww = 0; ww < arrayChar[hh].length; ww++) {
                 char cc = arrayChar[hh][ww];
 
+                //дублируем вывод символа
                 text.append(cc);
                 text.append(cc);
 
