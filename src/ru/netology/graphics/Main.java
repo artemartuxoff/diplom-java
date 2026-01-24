@@ -15,8 +15,7 @@ public class Main {
         // Создайте тут объект вашего класса конвертера
         TextGraphicsConverter converter = new GraphicsConverter();
 
-        converter.setMaxRatio(1);
-        try {
+       try {
             // пример для демонстрации
             //https://i.ibb.co/6DYM05G/edu0.jpg
             GServer server = new GServer(converter); // Создаём объект сервера
