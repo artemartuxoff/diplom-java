@@ -1,5 +1,6 @@
 package ru.netology.graphics;
 
+import ru.netology.graphics.image.BadImageSizeException;
 import ru.netology.graphics.image.ColorSchema;
 import ru.netology.graphics.image.GraphicsConverter;
 import ru.netology.graphics.image.TextGraphicsConverter;
@@ -13,13 +14,22 @@ public class Main {
 
         // Создайте тут объект вашего класса конвертера
         TextGraphicsConverter converter = new GraphicsConverter();
-  
-        //GServer server = new GServer(converter); // Создаём объект сервера
-        //server.start(); // Запускаем
 
-        // Или то же, но с выводом на экран:
-        String url = "https://raw.githubusercontent.com/netology-code/java-diplom/main/pics/simple-test.png";
-        String imgTxt = converter.convert(url);
-        System.out.println(imgTxt);
+        converter.setMaxRatio(1);
+        try {
+            // пример для демонстрации
+            //https://i.ibb.co/6DYM05G/edu0.jpg
+            GServer server = new GServer(converter); // Создаём объект сервера
+            server.start(); // Запускаем
+
+            // пример для отладки:
+            //String url = "https://raw.githubusercontent.com/netology-code/java-diplom/main/pics/simple-test.png";
+            //String imgTxt = converter.convert(url);
+            //System.out.println(imgTxt);
+        }
+        catch (BadImageSizeException e) {
+            System.out.println(e.toString());
+        }
+
     }
 }

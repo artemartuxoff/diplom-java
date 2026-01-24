@@ -35,10 +35,10 @@ public class GraphicsConverter implements TextGraphicsConverter {
         // соотношение сторон изображения, то вам здесь нужно сделать эту проверку,
         // и, если картинка не подходит, выбросить исключение BadImageSizeException.
         if (!(this.maxRatio == 0)) {
-            double ratio = width / height;
+            double sideRatio = width / height;
 
-            if (ratio > maxRatio) {
-                Exception e = new BadImageSizeException(ratio, this.maxRatio);
+           if (sideRatio > maxRatio) {
+                throw new BadImageSizeException(sideRatio, this.maxRatio);
             }
         }
 
@@ -116,8 +116,6 @@ public class GraphicsConverter implements TextGraphicsConverter {
         char[][] arrayChar = new char[newHeight][newWidth];
 
         for (int h = 0; h < newHeight; h++) {
-
-
             for (int w = 0; w < newWidth; w++) {
                 int color = bwRaster.getPixel(w, h, new int[3])[0];
                 char c = this.colorSchema.convert(color);
@@ -142,9 +140,7 @@ public class GraphicsConverter implements TextGraphicsConverter {
                 //дублируем вывод символа
                 text.append(cc);
                 text.append(cc);
-
             }
-
             text.append('\n');
         }
 
