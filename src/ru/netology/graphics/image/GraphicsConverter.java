@@ -10,10 +10,10 @@ import java.net.URL;
 
 public class GraphicsConverter implements TextGraphicsConverter {
 
-    int maxWidth;
-    int maxHeight;
-    double maxRatio;
-    TextColorSchema colorSchema;
+    protected int maxWidth;
+    protected int maxHeight;
+    protected double maxRatio;
+    protected TextColorSchema colorSchema;
 
     @Override
     public String convert(String url) throws IOException, BadImageSizeException {
@@ -34,10 +34,10 @@ public class GraphicsConverter implements TextGraphicsConverter {
         // Если конвертер попросили проверять на максимально допустимое
         // соотношение сторон изображения, то вам здесь нужно сделать эту проверку,
         // и, если картинка не подходит, выбросить исключение BadImageSizeException.
-        if (!(this.maxRatio == 0)) {
-            double sideRatio = width / height;
+        if ((this.maxRatio != 0)) {
+            double sideRatio = (double) width / height;
 
-           if (sideRatio > maxRatio) {
+           if (sideRatio > this.maxRatio) {
                 throw new BadImageSizeException(sideRatio, this.maxRatio);
             }
         }
@@ -51,11 +51,11 @@ public class GraphicsConverter implements TextGraphicsConverter {
         int newWidth = 0;
         int newHeight = 0;
 
-        if (!(this.maxHeight == 0)) {
+        if ((this.maxHeight != 0)) {
             ratio = Math.max(ratio, height / this.maxHeight);
         }
 
-        if (!(this.maxWidth == 0)) {
+        if ((this.maxWidth != 0)) {
             ratio = Math.max(ratio, width / this.maxWidth);
         }
 
