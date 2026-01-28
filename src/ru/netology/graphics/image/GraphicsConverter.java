@@ -20,7 +20,7 @@ public class GraphicsConverter implements TextGraphicsConverter {
 
         // Если объекту конвертера сеттером не передали иную реализацию схемы,
         // он должен использовать ваш класс как реализацию по умолчанию
-        if(this.colorSchema==null){
+        if (this.colorSchema == null) {
             this.colorSchema = new ColorSchema();
         }
 
@@ -37,7 +37,7 @@ public class GraphicsConverter implements TextGraphicsConverter {
         if ((this.maxRatio != 0)) {
             double sideRatio = (double) width / height;
 
-           if (sideRatio > this.maxRatio) {
+            if (sideRatio > this.maxRatio) {
                 throw new BadImageSizeException(sideRatio, this.maxRatio);
             }
         }
@@ -52,11 +52,11 @@ public class GraphicsConverter implements TextGraphicsConverter {
         int newHeight = 0;
 
         if ((this.maxHeight != 0)) {
-            ratio = Math.max(ratio, height / this.maxHeight);
+            ratio = Math.max(ratio, (double) height / this.maxHeight);
         }
 
         if ((this.maxWidth != 0)) {
-            ratio = Math.max(ratio, width / this.maxWidth);
+            ratio = Math.max(ratio, (double) width / this.maxWidth);
         }
 
         if (ratio == 0) {

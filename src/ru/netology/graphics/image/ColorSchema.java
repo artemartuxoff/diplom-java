@@ -3,11 +3,11 @@ package ru.netology.graphics.image;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ColorSchema implements TextColorSchema{
+public class ColorSchema implements TextColorSchema {
 
     protected char[] symbol;
 
-    public ColorSchema(){
+    public ColorSchema() {
 
         // строка символов
         symbol = new char[]{'#', '$', '@', '%', '*', '+', '-'};
